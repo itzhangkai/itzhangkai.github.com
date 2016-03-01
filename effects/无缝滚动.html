@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0; padding:0; list-style:none;}
+#box{width:800px; height:200px; margin:100px auto; position:relative; top:0; left:0; border:1px solid red; overflow:hidden;}
+ul{position:absolute; top:0; left:0;}
+li{float:left; width:200px; height:200px;}
+li img{width:100%;}
+a{position:absolute; top:0; width:50%; height:100%;}
+#left{left:0;}
+#right{right:0;}
+</style>
+<script>
+window.onload=function(){
+	var oBox = document.getElementById('box');
+	var oLeft = document.getElementById('left');
+	var oRight = document.getElementById('right');
+	var oUl = oBox.children[0];
+	oUl.innerHTML+=oUl.innerHTML;
+	var aLi = oUl.children;
+	oUl.style.width=aLi.length*aLi[0].offsetWidth+'px';
+	var w = oUl.offsetWidth/2;
+	var left = 0;
+	var timer = null;
+	function fnLeft(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			left-=10;
+			if(left<0){
+				oUl.style.left=left%w+'px';
+			}else{
+				oUl.style.left=(left%w-w)%w+'px';
+			}
+		},30);
+	}
+	function fnRight(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			left+=10;
+			if(left<0){
+				oUl.style.left=left%w+'px';
+			}else{
+				oUl.style.left=(left%w-w)%w+'px';
+			}
+		},30);
+	}
+	fnLeft();
+	oLeft.onmouseover=fnLeft;
+	oRight.onmouseover=fnRight;
+};
+</script>
+</head>
+
+<body>
+<div id="box">
+	<ul>
+    	<li><img src="pic/1.jpg" /></li>
+    	<li><img src="pic/2.jpg" /></li>
+    	<li><img src="pic/3.jpg" /></li>
+    	<li><img src="pic/4.jpg" /></li>
+    </ul>
+    <a href="javascript:;" id="left"></a>
+    <a href="javascript:;" id="right"></a>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+*{margin:0; padding:0;}
+body{background:#000;}
+span{float:left; width:50px; height:50px; font-size:50px; font-weight:bold; color:#fff; font-family:'微软雅黑'; text-align:center; line-height:50px;margin:5px; opacity:0}
+</style>
+<script src="move2.js"></script>
+<script>
+window.onload=function(){
+	var str = '相信不少人都幻想过能来一场说走就走的太空旅行。如果这真的实现了，你会怎么拍照记录你的太空之旅呢？跳跃抓怕，剪刀手自拍，还是手牵手和心爱的人一起漫步的背影？可以肯定的是，穿着太空服在“红色星球”上旅游的照片一定会获赞无数。最近，法国摄影师朱利安·莫夫（Julien Mauve）用一种另类的方式“实现”了火星旅行梦。他在地球上寻找每一处与火星相像的地方，让模特儿穿上“太空服”，摆出游客拍照的造型，为他们拍照';
+	for(var i=0;i<str.length;i++){
+		var oSpan = document.createElement('span');
+		oSpan.innerHTML=str.charAt(i);
+		document.body.appendChild(oSpan);
+	}
+	var aSpan = document.body.children;
+	//让他们出来
+	var i =0;
+	var timer = null;
+	timer = setInterval(function(){
+		startMove(aSpan[i],{'opacity':1});
+		i++;
+		if(i==aSpan.length){
+			clearInterval(timer);
+		}
+	},100);
+};
+</script>
+</head>
+
+<body>
+</body>
+</html>
